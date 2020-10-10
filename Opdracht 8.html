@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html>
     <body>
         <canvas id="canvas" width="800" height="600"></canvas>
@@ -6,14 +7,23 @@
             // Robotarm bibliotheek inladen
             var canvas = document.getElementById("canvas");
             var robotArm = new RobotArm(canvas);
-            
+
             // Het level inladen
-            robotArm.loadLevel("exercise 9");
-            
+            robotArm.loadLevel("exercise 8");
+
             // Jou instructies volgen hier
             robotArm.moveRight();
-            robotArm.moveRight();
-            
+            for( var i = 1; i < 8; i++){
+                robotArm.grab();
+                for(var o = 1; o <9; o++){
+                robotArm.moveRight();
+            }
+                robotArm.drop();
+                for(var u = 1; u <9; u++){
+                robotArm.moveLeft();
+                }
+            }
+
             // De door jou opgegeven instructies uitvoeren
             robotArm.run();
         </script>
