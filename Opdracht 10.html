@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+    <body>
+        <canvas id="canvas" width="800" height="600"></canvas>
+        <script src="./robot-arm.js"></script>
+        <script>
+
+            var canvas = document.getElementById("canvas");
+            var robotArm = new RobotArm(canvas);
+
+            robotArm.loadLevel("exercise 10");
+
+            var Block_Distance = 8;
+
+            for(q = 0; q <= 4; q++){
+                    robotArm.grab();
+                for(y = 0; y <= Block_Distance; y++){
+                    robotArm.moveRight();
+                }
+
+                    Block_Distance = Block_Distance -1;
+                    robotArm.drop();
+                for(t = 0; t <= Block_Distance; t++){
+                    robotArm.moveLeft();
+                }
+                   
+                    Block_Distance = Block_Distance -1;
+            }
+
+            robotArm.run();
+        </script>
+    </body>
+</html>

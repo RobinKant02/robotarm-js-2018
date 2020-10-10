@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+    <body>
+        <canvas id="canvas" width="800" height="600"></canvas>
+        <script src="./robot-arm.js"></script>
+        <script>
+
+            var canvas = document.getElementById("canvas");
+            var robotArm = new RobotArm(canvas);
+
+            // Het level inladen
+            robotArm.randomLevel( 1, 8);
+
+            // Jou instructies volgen hier
+            var DistanceGo = 8;
+            var DistanceBack = 8;
+            var color;
+
+        for(ql = 0; ql <= 5; ql++){
+                robotArm.grab();
+                color = robotArm.scan();
+
+            for(r = 0; r <= DistanceGo; r++){
+                robotArm.moveRight();
+            }
+                DistanceGo = DistanceGo -1;
+                robotArm.drop();
+            for(g = 0; g <= DistanceBack; g++){
+                robotArm.moveLeft();
+            }
+                DistanceBack = DistanceBack -1;
+            if(color == null){
+                ql = ql + 6;
+            }
+        }
+
+            robotArm.run();
+        </script>
+    </body>
+</html>
